@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhinav Dixit | Portfolio</title>
+
+    <style>
+        :root {
+            --primary-dark: #232323;
+            --primary-highlight: #3B82F6;
+            --text-color: #374151;
+            --light-gray: #f9fafb;
+            --med-gray: #4b5563;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Layout */
+        .Layout {
+            width: 90%;
+            max-width: 1280px;
+            margin: 2rem auto 3rem auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 1.0);
+            border-radius: 0.15rem;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .portfolio-grid {
+            display: block;
+        }
+
+        @media (min-width: 1024px) {
+            .portfolio-grid {
+                display: grid;
+                grid-template-columns: 350px 1fr;
+            }
+        }
+
+        .highlight-text {
+            color: var(--primary-highlight);
+        }
+
+        .highlight-bg {
+            background-color: var(--primary-highlight);
+        }
+
+        .text-dark {
+            color: var(--text-color);
+        }
+
+        .text-light {
+            color: #fff;
+        }
+
+        .text-gray-medium {
+            color: var(--med-gray);
+        }
+
+        .p-section {
+            padding: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .p-section {
+                padding: 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .p-section {
+                padding: 3rem;
+            }
+        }
+
+        /* Flex */
+        .flex-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .flex2 {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .flex3 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Navigation */
+        .main-header {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .nav-content {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-content {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            color: var(--med-gray);
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-highlight);
+            transition: color 150ms ease-in-out;
+            transform: scale(1.15);
+        }
+
+        /* (Dark Column) */
+        .sidebar {
+            background-color: var(--primary-dark);
+            color: #fff;
+            padding: 2rem;
+        }
+
+        .profile-img-container {
+            height: 16rem;
+            width: 100%;
+            background-color: #4b5563;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        .profile-img-container:hover {
+            cursor: pointer;
+            transform: scale(1.07);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .profile-img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            filter: grayscale(100%);
+        }
+
+        .profile-img:hover {
+            filter: grayscale(0%);
+            transition: filter 0.6s ease-in-out;
+        }
+
+        .h-name {
+            font-size: 2.25rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .h-name {
+                font-size: 3rem;
+            }
+        }
+
+        .h-title {
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            color: var(--primary-highlight);
+        }
+
+        .sidebar-heading {
+            font-size: 1.125rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid #4b5563;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            font-size: 0.875rem;
+        }
+
+        .contact-icon {
+            display: inline-block;
+            font-size: 1.25rem;
+            width: 1.5rem;
+            text-align: center;
+            margin-right: 0.75rem;
+            color: var(--primary-highlight);
+            line-height: 1;
+            fill: none;
+        }
+
+
+        .social-link {
+            transition: color 150ms ease-in-out;
+        }
+
+        .social-link:hover {
+            color: var(--primary-highlight);
+        }
+
+        .interest-tag {
+            padding: 0.25rem 0.75rem;
+            background-color: #4b5563;
+            font-size: 0.875rem;
+            border-radius: 9999px;
+        }
+
+        .interest-tag:hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        /* Light Column Styles */
+        .main-content {
+            padding: 2rem;
+            background-color: #fff;
+            color: var(--text-color);
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary-highlight);
+        }
+
+        .profile-text {
+            color: var(--med-gray);
+            line-height: 1.625;
+        }
+
+        .subsection {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #f3f4f6;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .project-category {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .project-date {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #fff;
+            background-color: var(--primary-highlight);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+
+        .project-description {
+            color: var(--med-gray);
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        .project-title:hover {
+            color: var(--primary-highlight);
+            transform: scale(1.05);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        /* Skill Bar */
+        .skill-box {
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 0.5rem;
+            background-color: var(--light-gray);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            border: 2px solid transparent;
+            font-weight: 600;
+            color: var(--text-color);
+            text-align: center;
+            transition: all 300ms ease-in-out;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.1), 0 4px 6px -4px rgba(59, 130, 246, 0.1);
+        }
+
+
+        /* Expertise Tags */
+        .exptag {
+            padding: 0.5rem 1rem;
+            background-color: #f3f4f6;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--primary-highlight);
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Education Section */
+        .edu-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .edu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .edu-title {
+            font-weight: 600;
+        }
+
+        .edu-subtitle,
+        .item-date {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .edu-date {
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: #1f2937;
+            color: #fff;
+            padding: 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation Bar (Top) -->
+    <header class="main-header">
+        <nav class="nav-content">
+            <div class="logo">
+                <a href="#" class="highlight-text">PORTFOLIO</a>
+            </div>
+            <!-- Nav Links -->
+            <div class="nav-links">
+                <a href="#profile" class="nav-link">Profile</a>
+                <a href="#experience" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Layout -->
+    <div class="Layout">
+
+        <!-- Grid -->
+        <div class="portfolio-grid">
+
+            <!-- Left Column -->
+            <aside id="contact" class="sidebar p-section">
+
+                <!-- Profile Image -->
+                <div class="profile-img-container">
+                    <img src="IMG-20251005-WA0009.jpg" alt="Abhinav Dixit"
+                        class="profile-img">
+                </div>
+
+                <!-- Name -->
+                <h1 class="h-name">Abhinav Dixit</h1>
+                <p class="h-title">UI/UX Designer</p>
+
+                <!-- Contact Section -->
+                <section style="margin-bottom: 2rem;">
+                    <h2 class="sidebar-heading">Contact</h2>
+                    <div style="font-size: 0.875rem;">
+                        <div class="contact-item">
+                            <img class="contact-icon" src="mail1.png" alt="Email Icon">
+                            <span>vasudksht@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <img class="contact-icon" src="telephone.png" alt="Phone Icon">
+                            <span>+91 9057271285</span>
+                        </div>
+                        <div class="contact-item">
+                            <img class="contact-icon" src="location.png" alt="Location Icon">
+                            <span>Bengaluru, India</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Social Media Section -->
+                <section style="margin-bottom: 2rem;">
+                    <h2 class="sidebar-heading">Social Media</h2>
+                    <div style="display: flex; gap: 1rem; color: #fff; font-size: 1.5rem;">
+                        <a href="https://www.linkedin.com/in/abhinav-dixit-462188373/" target="_blank"
+                            class="social-link">
+                            <svg style="width: 1.75rem; height: 1.75rem;" viewBox="0 0 24 24" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.528-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.385v6.85z" />
+                            </svg>
+                        </a>
+                        <a href="https://github.com/abhinavgit301" target="_blank" class="social-link">
+                            <svg style="width: 1.75rem; height: 1.75rem;" viewBox="0 0 24 24" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.802 8.207 11.385.6.113.82-.258.82-.577 0-.285-.011-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.542-1.368-1.325-1.734-1.325-1.734-1.089-.745.083-.73.083-.73 1.205.084 1.838 1.238 1.838 1.238 1.07 1.835 2.809 1.305 3.49.998.108-.77.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.31.464-2.381 1.235-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.046.138 3.003.404 2.291-1.552 3.3-1.23 3.3-1.23.653 1.652.242 2.873.118 3.176.77.84 1.233 1.911 1.233 3.221 0 4.609-2.807 5.624-5.479 5.923.43.372.823 1.102.823 2.222 0 1.604-.015 2.894-.015 3.284 0 .318.217.696.824.577C20.566 21.801 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
+                            </svg>
+                        </a>
+                        <a href="https://codeforces.com/profile/AbhiSagecoder" target="_blank" class="social-link">
+                            <svg style="width: 1.75rem; height: 1.75rem;" viewBox="0 0 24 24" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14l-5-4.87 6.91-1.01L12 2z" />
+                            </svg>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Interests Section -->
+                <section>
+                    <h2 class="sidebar-heading">Hobby & Interest</h2>
+                    <div class="flex3" style="gap: 0.75rem;">
+                        <span class="interest-tag">Exercise</span>
+                        <span class="interest-tag">Designing</span>
+                        <span class="interest-tag">Reading Books</span>
+                    </div>
+                </section>
+
+            </aside>
+
+            <!-- Light Area (Right Column) -->
+            <main class="main-content p-section" style="padding-top: 2.5rem; padding-bottom: 2.5rem;">
+
+                <!-- Profile Section -->
+                <section id="profile"
+                    style="padding-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; margin-bottom: 2.5rem;">
+                    <h2 class="section-header">Profile</h2>
+                    <p style="font-size: 1.125rem; font-weight: 500; color: #4b5563; margin-bottom: 1rem;">Hello, I'm
+                        Abhinav Dixit</p>
+                    <p class="profile-text">
+                        I’m a Computer Science student driven by curiosity, creativity, and a deep passion for building
+                        meaningful digital experiences. I’m fascinated by how ideas evolve into solutions that shape the
+                        way we interact with technology, and I strive to bring clarity, purpose, and innovation into
+                        every project I work on.
+                        My approach blends analytical thinking with a strong sense of design and structure. I believe
+                        that great work comes from understanding problems at their core, refining the smallest details,
+                        and continuously learning throughout the process.
+                        Every project in my portfolio reflects a step in my journey — exploring new concepts, improving
+                        my craft, and developing a mindset that values both functionality and creativity. I’m eager to
+                        keep learning, collaborate with inspiring people, and take on challenges that push me to grow
+                        beyond my limits.
+                    </p>
+                </section>
+
+                <!-- Projects Section -->
+                <section id="experience"
+                    style="padding-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; margin-bottom: 2.5rem;">
+                    <h2 class="section-header">Projects</h2>
+
+                    <!-- project 1 -->
+                    <div class="subsection" style="margin-bottom: 1.5rem;">
+                        <a href="https://night-ninja-s-vow-v8kh.vercel.app/" style="display:block;">
+                            <div class="flex2" style="margin-bottom: 0.5rem;">
+                                <div>
+                                    <h3 class="project-title">Night-Ninja-s-Vow</h3>
+                                    
+                                </div>
+                                <span class="project-date">Sep 2025</span>
+                            </div>
+                        </a>
+                        <p class="category">Game</p>
+                        <p class="project-description">
+                            Collaborated with a team of three to develop a classic 2D game during the Daydream
+                            Hackathon, demonstrating creativity, technical skill, and effective teamwork under a
+                            competitive, time-constrained environment.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Skills Section -->
+                <section id="skills"
+                    style="padding-bottom: 1.5rem; border-bottom: 1px solid #e5e7eb; margin-bottom: 2.5rem;">
+                    <h2 class="section-header">Skills & Expertise</h2>
+
+                    <div class="skills-grid">
+
+                        <div class="skill-box">
+                            HTML
+                        </div>
+
+                        <div class="skill-box">
+                            CSS
+                        </div>
+
+                        <div class="skill-box">
+                            JavaScript
+                        </div>
+
+                        <div class="skill-box">
+                            Python
+                        </div>
+
+                        <div class="skill-box">
+                            Java
+                        </div>
+
+                    </div>
+
+                    <div style="margin-top: 2rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem;">Key Expertise</h3>
+                        <div class="flex3" style="gap: 0.75rem;">
+                            <span class="exptag">UI/UX</span>
+                            <span class="exptag">Web Design</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education-->
+                <section>
+                    <h2 class="section-header">Education</h2>
+
+                    <!-- Education -->
+                    <div style="margin-bottom: 2rem;">
+                        <h3 class="edu-header">Education</h3>
+                        <div class="edu-item" style="margin-bottom: 1rem;">
+                            <div>
+                                <p class="edu-title">Computer Science</p>
+                                <p class="edu-subtitle">Scaler School of Technology</p>
+                            </div>
+                            <span class="edu-date">2025 - 2029</span>
+                        </div>
+                        <div class="edu-item">
+                            <div>
+                                <p class="edu-title">BS in Data Science and Application</p>
+                                <p class="edu-subtitle">Indian Institute of Technology, Madras</p>
+                            </div>
+                            <span class="edu-date">2025 - 2029</span>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="main-footer">
+            <p>Designed and Built by Abhinav Dixit. Styled with HTML & Native CSS.</p>
+        </footer>
+
+    </div> <!-- END Layout-->
+
+</body>
+
+</html>
